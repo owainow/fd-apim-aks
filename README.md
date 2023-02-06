@@ -1,3 +1,3 @@
-﻿# Azure AKS DotNet Microservice demo with API Management & Front Door
+﻿# AKS DotNet Demo with API Management & Front Door
  
  
