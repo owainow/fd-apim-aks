@@ -40,6 +40,16 @@ resource "azurerm_kubernetes_cluster" "aks-backend" {
     type = "SystemAssigned"
   }
 
+  resource "azurerm_kubernetes_cluster_node_pool" "userpool" {
+  name                  = "userpool"
+  kubernetes_cluster_id = azurerm_kubernetes_cluster.userpool.id
+  vm_size               = "Standard_DS2_v2"
+  node_count            = 1
+  node_taints           = "nodepool=worker:NoSchedule"
+  node_labels           = "nodepool=worker"
+
+  }
+
   network_profile {
     network_plugin    = "azure"
     load_balancer_sku = "standard"
