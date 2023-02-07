@@ -16,6 +16,14 @@ spec:
       containers:
        - name: platform-image
          image: owain.azurecr.io/platforms:latest
+         imagePullPolicy: Always
+         resources:
+          requests:
+            memory: "64Mi"
+            cpu: "250m"
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
       affinity:
         nodeAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:
