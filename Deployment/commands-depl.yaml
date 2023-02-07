@@ -16,6 +16,21 @@ spec:
       containers:
        - name: commands-image
          image:  owain.azurecr.io/platforms:latest
+         imagePullPolicy: Always
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+               - key: nodepool
+                 operator: In
+                 values:
+                 - worker
+      tolerations:
+        - key: "nodepool"
+          operator: "Equal"
+          value: "worker"
+          effect: "NoSchedule"
 
 ---
 apiVersion: v1
